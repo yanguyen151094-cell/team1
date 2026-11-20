@@ -17,7 +17,6 @@
  */
 
 export const chatConversation: string[] = [
-  export const chatConversation: string[] = [
   'Anh em nhận được KM chưa, mình vừa thấy cộng điểm rồi.',
   'Có anh em nào từ bên live chạy xuống đây giống mình không?',
   'Cổng này dạo này nhả đều không anh em, mới vào nên hơi rén.',
