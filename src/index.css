@@ -1,0 +1,365 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&family=Orbitron:wght@600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: #0a0a0b;
+  color: #f4f2ee;
+  font-family: 'Be Vietnam Pro', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.font-display {
+  font-family: 'Cormorant Garamond', 'Be Vietnam Pro', serif;
+}
+
+.font-body {
+  font-family: 'Be Vietnam Pro', system-ui, sans-serif;
+}
+
+.font-tech {
+  font-family: 'Orbitron', 'Be Vietnam Pro', sans-serif;
+  letter-spacing: 0.04em;
+}
+
+.font-brand {
+  font-family: 'Anton', 'Be Vietnam Pro', sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.015em;
+  transform: skewX(-7deg);
+  transform-origin: left center;
+}
+
+.font-brand-center {
+  font-family: 'Anton', 'Be Vietnam Pro', sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.015em;
+  transform: skewX(-7deg);
+  transform-origin: center center;
+}
+
+/* Tiêu đề đầu trang: chữ đứng thẳng, không nghiêng */
+.font-brand-straight {
+  font-family: 'Anton', 'Be Vietnam Pro', sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.015em;
+  font-style: normal;
+  transform: none;
+}
+
+/* Chữ đổi nhiều màu liên tục + nhấp nháy mềm */
+.hero-color-cycle {
+  background-image: linear-gradient(
+    100deg,
+    #35e0c0 0%,
+    #c6f26b 14%,
+    #f6d36b 30%,
+    #ff9f7a 46%,
+    #f2a7c3 62%,
+    #7ef3e0 78%,
+    #35e0c0 100%
+  );
+  background-size: 320% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: heroColorShift 9s linear infinite, heroBlink 3.6s ease-in-out infinite;
+}
+
+@keyframes heroColorShift {
+  from {
+    background-position: 0% 50%;
+  }
+  to {
+    background-position: 320% 50%;
+  }
+}
+
+@keyframes heroBlink {
+  0%,
+  100% {
+    opacity: 1;
+    filter: drop-shadow(0 0 12px rgba(126, 243, 224, 0.4));
+  }
+  50% {
+    opacity: 0.7;
+    filter: drop-shadow(0 0 22px rgba(246, 211, 107, 0.55));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-color-cycle {
+    animation: none;
+  }
+}
+
+.brand-mint {
+  background-image: linear-gradient(178deg, #f0fffa 0%, #c6fbe8 42%, #86eecb 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 9px rgba(150, 245, 215, 0.45)) drop-shadow(0 0 26px rgba(88, 230, 196, 0.22));
+}
+
+.brand-mint-soft {
+  color: #bff7e3;
+  text-shadow: 0 0 10px rgba(150, 245, 215, 0.35), 0 0 30px rgba(88, 230, 196, 0.18);
+}
+
+.gate-gradient {
+  background-image: linear-gradient(94deg, #ff6a5e 0%, #ff8f7a 16%, #e7c6b6 34%, #cfe0d6 50%, #a9e8dd 68%, #6fe6d6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 16px rgba(126, 243, 224, 0.28));
+}
+
+.neon-title {
+  color: #f6d36b;
+  text-shadow: 0 0 10px rgba(246, 211, 107, 0.55), 0 0 34px rgba(246, 211, 107, 0.35),
+    0 0 72px rgba(246, 211, 107, 0.2);
+}
+
+.neon-sub {
+  color: #7ef3e0;
+  text-shadow: 0 0 12px rgba(126, 243, 224, 0.45), 0 0 40px rgba(126, 243, 224, 0.22);
+}
+
+@keyframes gateProgress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.gate-progress {
+  transform-origin: left center;
+  animation-name: gateProgress;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes chatPop {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.chat-pop {
+  animation: chatPop 0.32s cubic-bezier(0.22, 0.68, 0.32, 1) both;
+}
+
+@keyframes chatBubbleIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.chat-bubble-in {
+  animation: chatBubbleIn 0.28s ease-out both;
+}
+
+@keyframes typingBlink {
+  0%,
+  80%,
+  100% {
+    opacity: 0.25;
+    transform: translateY(0);
+  }
+  40% {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+}
+
+.typing-dot {
+  animation: typingBlink 1.2s ease-in-out infinite;
+}
+
+.gate-glow {
+  box-shadow: 0 0 0 1px rgba(53, 224, 192, 0.28), 0 0 46px -14px rgba(53, 224, 192, 0.6);
+}
+
+@keyframes onlinePulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.65);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(74, 222, 128, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(74, 222, 128, 0);
+  }
+}
+
+.pulse-dot {
+  animation: onlinePulse 2.1s ease-out infinite;
+}
+
+@keyframes flagGlobeSpin {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.flag-globe-strip {
+  animation-name: flagGlobeSpin;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flag-globe-strip {
+    animation: none;
+  }
+}
+
+@keyframes starTwinkle {
+  0%,
+  100% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.75;
+  }
+}
+
+.star-twinkle {
+  animation: starTwinkle 5s ease-in-out infinite;
+}
+
+/* Anti-spam field: hidden through the page stylesheet rather than utility classes */
+.contact-extra-field {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Ẩn huy hiệu "Deployed on Netlify" ở góc trang */
+#netlify-badge,
+#netlify-deploy-badge,
+.netlify-badge,
+[data-netlify-badge],
+[data-netlify-status],
+a[href*="netlify.com"][target="_blank"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+}
+
+::selection {
+  background-color: #e0b36a;
+  color: #0a0a0b;
+}
+
+@keyframes softRise {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes haloPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(224, 179, 106, 0.45);
+  }
+  70% {
+    box-shadow: 0 0 0 16px rgba(224, 179, 106, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(224, 179, 106, 0);
+  }
+}
+
+@keyframes slowDrift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -14px, 0);
+  }
+}
+
+.animate-rise {
+  animation: softRise 0.7s cubic-bezier(0.22, 0.68, 0.32, 1) both;
+}
+
+.animate-halo {
+  animation: haloPulse 2.6s ease-out infinite;
+}
+
+.animate-drift {
+  animation: slowDrift 9s ease-in-out infinite;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 0.68, 0.32, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-rise,
+  .animate-halo,
+  .animate-drift,
+  .chat-pop,
+  .chat-bubble-in,
+  .typing-dot {
+    animation: none;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
