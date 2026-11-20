@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import type { MouseEvent } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const navItems = [
@@ -36,6 +37,13 @@ export default function SiteHeader() {
     navigate(`/${hash}`);
   };
 
+  const goToRegister = (event: MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    setMenuOpen(false);
+    navigate('/dang-ky');
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  };
+
   return (
     <header
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
@@ -71,6 +79,7 @@ export default function SiteHeader() {
         <div className="flex items-center gap-2">
           <Link
             to="/dang-ky"
+            onClick={goToRegister}
             className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-[#e0b36a] hover:bg-[#eec27f] text-[#0a0a0b] text-[13px] font-bold transition-colors duration-200 cursor-pointer whitespace-nowrap"
           >
             <span className="w-4 h-4 flex items-center justify-center">
@@ -102,8 +111,8 @@ export default function SiteHeader() {
           ))}
           <Link
             to="/dang-ky"
-            onClick={() => setMenuOpen(false)}
-            className="mt-2 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-md bg-[#e0b36a] text-[#0a0a0b] text-sm font-bold cursor-pointer whitespace-nowrap"
+            onClick={goToRegister}
+            className="relative z-10 mt-2 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-md bg-[#e0b36a] text-[#0a0a0b] text-sm font-bold cursor-pointer whitespace-nowrap"
           >
             Đăng Ký Ngay
           </Link>

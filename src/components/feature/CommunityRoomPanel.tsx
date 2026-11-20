@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import type { FormEvent } from 'react';
-import { chatMembers, chatQuickReplies, chatRoomTopic } from '@/mocks/communityChat';
+import { chatMemberTotal, chatMembers, chatQuickReplies, chatRoomTopic } from '@/mocks/communityChat';
 import { useCommunityChat } from '@/components/feature/useCommunityChat';
 
 interface CommunityRoomPanelProps {
@@ -34,7 +34,6 @@ export default function CommunityRoomPanel({ onMinimize, onOpenLead }: Community
     typing,
     typingMemberId,
     typingName,
-    setAutoPaused,
     join,
     send,
     toggleLike,
@@ -44,17 +43,46 @@ export default function CommunityRoomPanel({ onMinimize, onOpenLead }: Community
   const [nameError, setNameError] = useState('');
   const [showMembers, setShowMembers] = useState(false);
   const scrollRef = useRef<HTMLDivElement | null>(null);
+  const contentRef = useRef<HTMLDivElement | null>(null);
+  const memberTotalLabel = chatMemberTotal.toLocaleString('vi-VN');
 
   const memberById = useMemo(
     () => Object.fromEntries(chatMembers.map((member) => [member.id, member])),
     [],
   );
 
+  /** Mỗi khi có tin mới / khung chat vừa mở: kéo thẳng xuống tin cuối */
   useEffect(() => {
     const el = scrollRef.current;
-    if (!el) return;
-    el.scrollTo({ top: el.scrollHeight, behavior: 'smooth' });
+    if (!el) return undefined;
+
+    const jump = () => {
+      el.scrollTop = el.scrollHeight;
+    };
+
+    jump();
+    const frame = window.requestAnimationFrame(jump);
+    const timer = window.setTimeout(jump, 240);
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.clearTimeout(timer);
+    };
   }, [messages.length, nickname, showMembers, typing]);
+
+  /** Nội dung cao lên (bong bóng hiện xong, xuống dòng...) thì bám tiếp xuống cuối */
+  useEffect(() => {
+    const el = scrollRef.current;
+    const content = contentRef.current;
+    if (!el || !content || typeof ResizeObserver === 'undefined') return undefined;
+
+    const observer = new ResizeObserver(() => {
+      el.scrollTop = el.scrollHeight;
+    });
+    observer.observe(content);
+
+    return () => observer.disconnect();
+  }, []);
 
   const handleJoin = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -74,7 +102,7 @@ export default function CommunityRoomPanel({ onMinimize, onOpenLead }: Community
   };
 
   return (
-    <div className="chat-pop relative flex h-[min(76vh,600px)] w-[calc(100vw-2rem)] max-w-[382px] flex-col overflow-hidden rounded-lg border border-white/10 bg-[#0b1218] shadow-2xl shadow-black/60">
+    <div className="chat-pop relative flex h-[min(76vh,600px)] w-full max-w-[382px] flex-col overflow-hidden rounded-lg border border-white/10 bg-[#0b1218] shadow-2xl shadow-black/60">
       {/* Đầu phòng */}
       <div className="relative shrink-0 border-b border-white/10 bg-[linear-gradient(125deg,rgba(53,224,192,0.2),rgba(11,18,24,0.72))] px-3.5 py-3">
         <div className="flex items-center gap-2.5">
@@ -95,7 +123,7 @@ export default function CommunityRoomPanel({ onMinimize, onOpenLead }: Community
             </p>
             <p className="mt-0.5 flex items-center gap-1.5 truncate text-[10.5px] text-[#9fc9c3]">
               <span className="block h-1.5 w-1.5 rounded-full bg-[#4ade80] pulse-dot" />
-              {chatMembers.length} thành viên · {chatRoomTopic}
+              {memberTotalLabel} thành viên · {chatRoomTopic}
             </p>
           </div>
           <button
@@ -119,8 +147,11 @@ export default function CommunityRoomPanel({ onMinimize, onOpenLead }: Community
 
       {/* Nội dung phòng */}
       <div className="relative flex min-h-0 flex-1 flex-col">
-        <div ref={scrollRef} className="min-h-0 flex-1 overflow-y-auto px-3 py-3.5">
-          <div className="flex flex-col gap-3">
+        <div
+          ref={scrollRef}
+          className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-3 py-3.5 [overflow-anchor:none]"
+        >
+          <div ref={contentRef} className="flex flex-col gap-3">
             <p className="mx-auto rounded-full bg-white/5 px-2.5 py-1 text-[9.5px] uppercase tracking-[0.14em] text-[#6f7d87]">
               Hôm nay
             </p>
@@ -250,8 +281,6 @@ export default function CommunityRoomPanel({ onMinimize, onOpenLead }: Community
                     setNameError('');
                   }}
                   maxLength={24}
-                  onFocus={() => setAutoPaused(true)}
-                  onBlur={() => setAutoPaused(false)}
                   placeholder="Ví dụ: Minh Quân"
                   aria-label="Biệt danh của bạn"
                   className="min-w-0 flex-1 rounded-md border border-white/10 bg-[#070d12] px-3 py-2.5 text-[12px] text-white outline-none placeholder:text-[#5d6a73] focus:border-[#35e0c0]/50"
@@ -270,7 +299,7 @@ export default function CommunityRoomPanel({ onMinimize, onOpenLead }: Community
             </form>
           ) : (
             <>
-              <div className="mb-2 flex gap-1.5 overflow-x-auto pb-1">
+              <div className="no-scrollbar mb-2 flex gap-1.5 overflow-x-auto pb-1">
                 {chatQuickReplies.map((reply) => (
                   <button
                     key={reply}
@@ -288,8 +317,6 @@ export default function CommunityRoomPanel({ onMinimize, onOpenLead }: Community
                   value={draft}
                   onChange={(event) => setDraft(event.target.value)}
                   maxLength={400}
-                  onFocus={() => setAutoPaused(true)}
-                  onBlur={() => setAutoPaused(false)}
                   placeholder={`Nhắn gì đó, ${nickname || 'bạn'}...`}
                   aria-label="Nội dung tin nhắn"
                   className="min-w-0 flex-1 rounded-md border border-white/10 bg-[#070d12] px-3 py-2.5 text-[12px] text-white outline-none placeholder:text-[#5d6a73] focus:border-[#35e0c0]/50"
@@ -322,9 +349,14 @@ export default function CommunityRoomPanel({ onMinimize, onOpenLead }: Community
         {showMembers && (
           <div className="absolute inset-0 z-10 flex flex-col bg-[#0b1218]">
             <div className="flex shrink-0 items-center justify-between border-b border-white/8 px-3.5 py-2.5">
-              <p className="text-[11.5px] font-semibold text-white">
-                Thành viên trong phòng ({chatMembers.length})
-              </p>
+              <div className="min-w-0">
+                <p className="text-[11.5px] font-semibold text-white">
+                  Thành viên đang trực tuyến ({memberTotalLabel})
+                </p>
+                <p className="mt-0.5 text-[9.5px] text-[#6f7d87]">
+                  Đang hiển thị {chatMembers.length} người nổi bật
+                </p>
+              </div>
               <button
                 type="button"
                 onClick={() => setShowMembers(false)}

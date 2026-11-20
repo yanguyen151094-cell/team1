@@ -1,0 +1,13 @@
+[build]
+  command = "npm run build"
+  publish = "out"
+
+[build.environment]
+  NODE_VERSION = "20"
+  NPM_FLAGS = "--legacy-peer-deps"
+
+# SPA fallback: mọi đường dẫn đều trả về index.html để React Router xử lý
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
 import LeadModal from '@/components/feature/LeadModal';
 import CommunityRoomPanel from '@/components/feature/CommunityRoomPanel';
-import { chatMembers } from '@/mocks/communityChat';
+import { chatMemberTotal } from '@/mocks/communityChat';
+
+const memberTotalLabel =
+  chatMemberTotal >= 1000 ? `${Math.floor(chatMemberTotal / 1000)}k` : String(chatMemberTotal);
 
 export default function LiveChatWidget() {
   const [open, setOpen] = useState(false);
@@ -15,13 +18,13 @@ export default function LiveChatWidget() {
 
   return (
     <>
-      <div className="fixed bottom-4 left-4 z-[70] flex flex-col items-start gap-3 sm:bottom-6 sm:left-6">
-        <div className={open ? 'block' : 'hidden'} aria-hidden={!open}>
+      <div className="fixed bottom-4 left-4 right-3 z-[70] flex flex-col items-start gap-3 sm:bottom-6 sm:left-6 sm:right-auto">
+        {open && (
           <CommunityRoomPanel
             onMinimize={() => setOpen(false)}
             onOpenLead={() => setModalOpen(true)}
           />
-        </div>
+        )}
 
         <div className="flex items-center gap-2.5">
           <button
@@ -37,8 +40,8 @@ export default function LiveChatWidget() {
             {!open && (
               <>
                 <span className="absolute inset-0 rounded-full ring-2 ring-[#35e0c0]/30 animate-ping" />
-                <span className="absolute -right-0.5 -top-0.5 flex h-5 min-w-5 items-center justify-center rounded-full border-2 border-[#0a0a0b] bg-[#f6d36b] px-1 text-[9.5px] font-bold text-[#0a0a0b]">
-                  {chatMembers.length}
+                <span className="absolute -right-0.5 -top-0.5 flex h-5 min-w-5 items-center justify-center rounded-full border-2 border-[#0a0a0b] bg-[#f6d36b] px-1.5 text-[9.5px] font-bold text-[#0a0a0b]">
+                  {memberTotalLabel}
                 </span>
               </>
             )}

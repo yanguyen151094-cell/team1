@@ -9,6 +9,9 @@ export interface ChatMember {
 
 export const chatRoomTopic = 'Trò chuyện thoải mái';
 
+/** Tổng số thành viên đang trong phòng (hiển thị ở đầu khung chat) */
+export const chatMemberTotal = 12486;
+
 export const chatMembers: ChatMember[] = [
   {
     id: 'minh-quan',
