@@ -6,7 +6,7 @@
  * Leave it empty to keep the built-in support panel as a fallback.
  */
 export const TAWK_DIRECT_CHAT_URL =
-  'https://tawk.to/chat/66abd0661601a2195b9f9a03/1i47ic53v?layout=modern';
+  'https://tawk.to/chat/6b00ac69df869c3c91429e99/1k7ta2v88?layout=modern';
 
 type TawkApi = {
   onLoad?: () => void;
