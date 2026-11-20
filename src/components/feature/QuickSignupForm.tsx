@@ -3,7 +3,7 @@ import type { FormEvent } from 'react';
 import useFormSubmit from '@/hooks/useFormSubmit';
 import { sendLeadToSheet } from '@/lib/sheetSink';
 
-export const GATE_REDIRECT_URL = 'https://www.noibo1d.online/';
+export const GATE_REDIRECT_URL = 'https://www.ola3yg88.sbs/register?affiliateCode=ygol01dqc01gg';
 
 const SUBMIT_ADDR = 'https://readdy.ai/api/form/dbvetsddijqr49061nbg';
 
