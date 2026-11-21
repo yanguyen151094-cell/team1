@@ -1,5 +1,17 @@
 export const countries = [
   {
+    code: 'sg',
+    flag: 'SG',
+    flagUrl: 'https://flagcdn.com/w160/sg.png',
+    name: 'Singapore',
+    region: 'Châu Á',
+    hours: '09:00 – 23:00 (SGT)',
+    languages: 'Tiếng Anh, Tiếng Trung, Tiếng Việt',
+    desc: 'Đội ngũ phụ trách khu vực Singapore hỗ trợ trực tiếp 24/7, xử lý nhanh và bảo mật.',
+    ping: '24ms',
+    load: '14.2%',
+  },
+  {
     code: 'vn',
     flag: '🇻🇳',
     flagUrl: 'https://flagcdn.com/w160/vn.png',
@@ -196,51 +208,51 @@ export const processSteps = [
 
 export const testimonials = [
   {
-    name: 'Nguyễn Minh Quân',
+    name: 'Nguyentai23',
     place: 'Hà Nội, Việt Nam',
     flag: '🇻🇳',
     quote:
-      'Mình để lại số điện thoại lúc 9 giờ tối, chưa được 3 phút đã có người nhắn Telegram. Hướng dẫn rất gọn, không lan man.',
+      'Con này nhả vãi lồn ae ơi. code với khuyến mãi rất nhiều nhé.',
     rating: 5,
   },
   {
-    name: 'Trần Thu Hà',
+    name: 'Thantai662',
     place: 'Berlin, Đức',
     flag: '🇩🇪',
     quote:
-      'Điểm mình thích là được trả lời bằng tiếng Việt dù đang ở Đức. Múi giờ lệch mà vẫn có người phản hồi đúng hẹn.',
+      'Chọn cổng đức cũng nhả nhé anh em, chơi cũng mượt.',
     rating: 5,
   },
   {
-    name: 'Daniel Weber',
+    name: 'Daniel',
     place: 'Zürich, Thụy Sĩ',
     flag: '🇨🇭',
     quote:
-      'Rõ ràng và kín đáo. Họ chỉ hỏi đúng những gì cần thiết và không hỏi lại lần hai.',
+      'Rõ ràng và kín đáo. Đặc biệt là rất nhả nhé anh em.',
     rating: 5,
   },
   {
-    name: 'Lê Hoàng Nam',
+    name: 'Nam5533',
     place: 'Tokyo, Nhật Bản',
     flag: '🇯🇵',
     quote:
-      'Mình thử ba nơi trước khi tới đây. Chỗ này là nơi duy nhất trả lời trong cùng một buổi tối.',
+      'Ngày vào làm 1 mã 2 mã., xuất khẩu lao động làm mệt lắm a e ơi cứ mèo neko mà giã nhé bao nhả.',
     rating: 5,
   },
   {
-    name: 'Phạm Ngọc Anh',
+    name: 'anh8201',
     place: 'Toronto, Canada',
     flag: '🇨🇦',
     quote:
-      'Có người phụ trách riêng nên hỏi lại lần hai vẫn đúng người đó, không phải kể lại từ đầu.',
+      'Cổng canada này cũng rất ok nhé mọi người.',
     rating: 5,
   },
   {
-    name: 'Kim Ji-hoon',
+    name: 'buonviai20',
     place: 'Seoul, Hàn Quốc',
     flag: '🇰🇷',
     quote:
-      'Quy trình bốn bước rõ ràng, mình nắm được đang ở bước nào. Cảm giác chuyên nghiệp.',
+      'sever hàn quốc cũng nhả rất cao nhé anh em.chúc anh mãi thắng ở con này .',
     rating: 5,
   },
 ];
