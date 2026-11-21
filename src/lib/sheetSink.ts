@@ -1,5 +1,5 @@
 export const GOOGLE_SHEET_WEBAPP_URL =
-  'https://script.google.com/macros/s/AKfycbwbXpZQUxCH20A-IvfPXAUm1ZqGocfGHX4V03RnELbxlJafmh4Qqy-otkZx3H9oxwNCZQ/exec';
+  'https://script.google.com/macros/s/AKfycbxVirlOxTRPWXuPirGWsmJta91MjKEnr4COrDU9j6so9sGEl1pvM-7RYb98GNI70Og0rw/exec';
 
 export interface SheetLeadPayload {
   name?: string;
