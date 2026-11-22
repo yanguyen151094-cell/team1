@@ -1,8 +1,3 @@
 User-agent: *
 Allow: /
-
-# Không cho bot quét các file nội bộ
-Disallow: /src/
-Disallow: /node_modules/
-
-Sitemap: https://sirdlk.readdy.co/sitemap.xml
+Sitemap: https://iy88.xyz/sitemap.xml
