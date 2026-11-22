@@ -34,30 +34,157 @@ body {
   letter-spacing: 0.04em;
 }
 
+/* Logo YG88: chữ đứng thẳng, không nghiêng, màu vàng chanh */
 .font-brand {
-  font-family: 'Anton', 'Be Vietnam Pro', sans-serif;
-  font-weight: 400;
+  font-family: 'Orbitron', 'Be Vietnam Pro', sans-serif;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.015em;
-  transform: skewX(-7deg);
+  letter-spacing: 0.02em;
+  font-style: normal;
+  transform: none;
   transform-origin: left center;
 }
 
 .font-brand-center {
-  font-family: 'Anton', 'Be Vietnam Pro', sans-serif;
-  font-weight: 400;
+  font-family: 'Orbitron', 'Be Vietnam Pro', sans-serif;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.015em;
-  transform: skewX(-7deg);
+  letter-spacing: 0.02em;
+  font-style: normal;
+  transform: none;
   transform-origin: center center;
 }
 
-/* Tiêu đề đầu trang: chữ đứng thẳng, không nghiêng */
+.brand-logo {
+  color: #e8f52a;
+  text-shadow: 0 0 12px rgba(232, 245, 42, 0.42), 0 0 34px rgba(232, 245, 42, 0.18);
+}
+
+/* Khung bảng hiệu "Cổng Quốc Tế" */
+.billboard-frame {
+  position: relative;
+  border: 1px solid rgba(53, 224, 192, 0.4);
+  border-radius: 10px;
+  background-image: linear-gradient(180deg, rgba(6, 20, 26, 0.88) 0%, rgba(4, 12, 18, 0.94) 100%);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04), inset 0 0 42px rgba(53, 224, 192, 0.09),
+    0 0 38px -18px rgba(53, 224, 192, 0.55);
+  overflow: hidden;
+}
+
+.billboard-frame::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.05) 0px,
+    rgba(255, 255, 255, 0.05) 1px,
+    transparent 1px,
+    transparent 4px
+  );
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.billboard-corner {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-color: #e8f52a;
+  border-style: solid;
+  border-width: 0;
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.billboard-corner-tl {
+  top: 6px;
+  left: 6px;
+  border-top-width: 2px;
+  border-left-width: 2px;
+}
+
+.billboard-corner-tr {
+  top: 6px;
+  right: 6px;
+  border-top-width: 2px;
+  border-right-width: 2px;
+}
+
+.billboard-corner-bl {
+  bottom: 6px;
+  left: 6px;
+  border-bottom-width: 2px;
+  border-left-width: 2px;
+}
+
+.billboard-corner-br {
+  bottom: 6px;
+  right: 6px;
+  border-bottom-width: 2px;
+  border-right-width: 2px;
+}
+
+/* Chữ bảng hiệu: đổi màu + nhấp nháy như biển quảng cáo.
+   Dùng màu đặc (không cắt nền gradient) để dấu tiếng Việt luôn hiển thị đầy đủ. */
+.billboard-text {
+  color: #7ef3e0;
+  text-shadow: 0 0 18px rgba(126, 243, 224, 0.4), 0 0 46px rgba(53, 224, 192, 0.2);
+  animation: billboardColorShift 9s linear infinite, billboardFlicker 4.6s ease-in-out infinite;
+}
+
+@keyframes billboardColorShift {
+  0% {
+    color: #7ef3e0;
+  }
+  25% {
+    color: #c6f26b;
+  }
+  50% {
+    color: #f6d36b;
+  }
+  75% {
+    color: #b2e9dc;
+  }
+  100% {
+    color: #7ef3e0;
+  }
+}
+
+@keyframes billboardFlicker {
+  0%,
+  92%,
+  100% {
+    opacity: 1;
+    filter: drop-shadow(0 0 14px rgba(126, 243, 224, 0.45));
+  }
+  93% {
+    opacity: 0.45;
+  }
+  94.5% {
+    opacity: 1;
+  }
+  96% {
+    opacity: 0.6;
+    filter: drop-shadow(0 0 26px rgba(246, 211, 107, 0.6));
+  }
+  97.5% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .billboard-text {
+    animation: none;
+  }
+}
+
+/* Tiêu đề đầu trang: chữ đứng thẳng, không nghiêng, hiện đủ dấu tiếng Việt */
 .font-brand-straight {
-  font-family: 'Anton', 'Be Vietnam Pro', sans-serif;
-  font-weight: 400;
+  font-family: 'Be Vietnam Pro', system-ui, sans-serif;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.015em;
+  letter-spacing: 0.02em;
   font-style: normal;
   transform: none;
 }

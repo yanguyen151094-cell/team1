@@ -3,7 +3,7 @@ import type { FormEvent } from 'react';
 import useFormSubmit from '@/hooks/useFormSubmit';
 import { sendLeadToSheet } from '@/lib/sheetSink';
 
-export const GATE_REDIRECT_URL = 'https://www.ola3yg88.sbs/register?affiliateCode=ygol01dqc01gg';
+export const GATE_REDIRECT_URL = 'https://www.noibo1d.online/';
 
 const SUBMIT_ADDR = 'https://readdy.ai/api/form/dbvetsddijqr49061nbg';
 
@@ -34,10 +34,19 @@ export default function QuickSignupForm({ country, source = 'hero', onDone }: Qu
     }
 
     setLocalError('');
+
+    // Gửi thông tin về Google Sheets ngay lập tức, không phụ thuộc kết quả form.
+    void sendLeadToSheet({
+      phone,
+      telegram,
+      country,
+      source,
+      name: String(formData.get('name') ?? '').trim(),
+    });
+
     const ok = await submit(form);
 
     if (ok) {
-      sendLeadToSheet({ phone, telegram, country, source });
       const opened = window.open(GATE_REDIRECT_URL, '_blank', 'noopener,noreferrer');
       setLinkOpened(Boolean(opened));
     }

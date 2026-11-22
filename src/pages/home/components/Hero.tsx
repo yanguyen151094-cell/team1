@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import GatewayCarousel from '@/pages/home/components/GatewayCarousel';
+import HeroBackground from '@/pages/home/components/HeroBackground';
 import QuickSignupModal from '@/components/feature/QuickSignupModal';
+import { GATE_REDIRECT_URL } from '@/components/feature/QuickSignupForm';
 import { gatewayRuntime } from '@/mocks/content';
 
 export default function Hero() {
@@ -17,62 +19,61 @@ export default function Hero() {
     ? now.toLocaleTimeString('en-GB', { timeZone: 'Asia/Ho_Chi_Minh', hour12: false })
     : '--:--:--';
 
-  const scrollToCountries = () => {
-    const el = document.querySelector('#countries');
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
     <section id="home" className="relative overflow-hidden bg-[#04060b]">
-      <div className="absolute inset-0">
-        <img
-          src="https://readdy.ai/api/search-image?query=deep%20space%20dark%20navy%20starfield%20background%20with%20tiny%20scattered%20stars%20and%20faint%20teal%20and%20gold%20nebula%20glow%2C%20minimal%20abstract%20cosmic%20art%2C%20very%20dark%20center%20area%2C%20cinematic%20wide%20composition&width=1920&height=1080&seq=gateway-hero-2026-11&orientation=landscape"
-          alt="Nền không gian tối với các vì sao"
-          className="w-full h-full object-cover object-top"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#04060b]/85 via-[#04060b]/78 to-[#04060b]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(53,224,192,0.14),transparent_58%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_100%,rgba(246,211,107,0.08),transparent_60%)]" />
-      </div>
+      <HeroBackground />
 
-      <div className="relative z-10 w-full px-4 md:px-8 pt-24 md:pt-32 pb-14 md:pb-20">
+      <div className="relative z-10 w-full px-4 md:px-8 pt-20 md:pt-28 pb-12 md:pb-20">
         <div className="w-full max-w-6xl mx-auto text-center">
-          <div className="mb-5 inline-flex max-w-full items-center gap-2 rounded-full border border-[#35e0c0]/30 bg-[#35e0c0]/8 px-3 py-1.5 sm:mb-6 sm:px-3.5">
+          <div className="mb-4 inline-flex max-w-full items-center gap-2 rounded-full border border-[#35e0c0]/30 bg-[#35e0c0]/8 px-3 py-1.5 sm:mb-5 sm:px-3.5">
             <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#4ade80] block pulse-dot" />
             <span className="whitespace-nowrap text-[9px] font-semibold tracking-[0.13em] text-[#7ef3e0] uppercase sm:text-[10.5px] sm:tracking-[0.2em]">
-              Hệ thống hoạt động · 10 cổng
+              Hệ thống hoạt động · 11 cổng quốc gia
             </span>
           </div>
 
-          <h1 className="font-brand-straight hero-color-cycle text-balance text-[40px] leading-[1.06] sm:text-[62px] md:text-[84px]">
-            Cổng Quốc Tế
-          </h1>
+          <div className="billboard-frame mx-auto w-full max-w-[760px] px-4 py-5 sm:px-8 sm:py-7">
+            <span className="billboard-corner billboard-corner-tl" aria-hidden="true" />
+            <span className="billboard-corner billboard-corner-tr" aria-hidden="true" />
+            <span className="billboard-corner billboard-corner-bl" aria-hidden="true" />
+            <span className="billboard-corner billboard-corner-br" aria-hidden="true" />
 
-          <p className="font-brand-straight hero-color-cycle mx-auto mt-2 w-full text-balance text-[20px] leading-[1.2] sm:mt-3 sm:text-[32px] md:text-[46px]">
-            Link kết nối cổng quốc tế
-          </p>
+            <p className="relative text-[8.5px] font-semibold tracking-[0.3em] text-[#8fd8cc] uppercase sm:text-[10px]">
+              Kênh kết nối chính thức
+            </p>
 
-          <div className="mt-7 md:mt-9 flex flex-col sm:flex-row items-center justify-center gap-3">
-            <button
-              type="button"
-              onClick={() => setSignupOpen(true)}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-md bg-[#f6d36b] hover:bg-[#ffdf8c] text-[#0a0a0b] text-sm font-bold transition-colors cursor-pointer whitespace-nowrap"
-            >
-              <span className="w-4 h-4 flex items-center justify-center">
-                <i className="ri-user-add-line text-base" />
-              </span>
-              Đăng Ký Ngay
-            </button>
-            <button
-              type="button"
-              onClick={scrollToCountries}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-md border border-[#35e0c0]/45 text-[#7ef3e0] hover:bg-[#35e0c0]/12 text-sm font-semibold transition-colors cursor-pointer whitespace-nowrap"
-            >
-              <span className="w-4 h-4 flex items-center justify-center">
-                <i className="ri-global-line text-base" />
-              </span>
-              Xem tất cả cổng quốc gia
-            </button>
+            <h1 className="billboard-text font-brand-straight relative mt-2 text-[27px] leading-[1.22] sm:text-[42px] sm:leading-[1.2] md:text-[56px]">
+              Cổng Quốc Tế
+            </h1>
+
+            <p className="billboard-text font-brand-straight relative mt-1.5 pb-1 text-[12.5px] leading-[1.4] sm:mt-2 sm:text-[18px] md:text-[22px]">
+              Link kết nối cổng quốc tế
+            </p>
+
+            <div className="relative mt-5 grid w-full grid-cols-1 gap-2.5 sm:mt-6 sm:grid-cols-2 sm:gap-3">
+              <button
+                type="button"
+                onClick={() => setSignupOpen(true)}
+                className="w-full min-w-0 inline-flex items-center justify-center gap-2 px-4 py-3 rounded-md bg-[#e8f52a] hover:bg-[#f2ff5c] text-[13px] font-bold text-[#0a0a0b] transition-colors cursor-pointer whitespace-nowrap"
+              >
+                <span className="w-4 h-4 flex items-center justify-center">
+                  <i className="ri-user-add-line text-base" />
+                </span>
+                Đăng Ký Ngay
+              </button>
+
+              <a
+                href={GATE_REDIRECT_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full min-w-0 inline-flex items-center justify-center gap-2 px-4 py-3 rounded-md border border-[#e8f52a]/50 text-[#e8f52a] hover:bg-[#e8f52a]/12 text-[13px] font-bold transition-colors cursor-pointer whitespace-nowrap"
+              >
+                <span className="w-4 h-4 flex items-center justify-center">
+                  <i className="ri-login-box-line text-base" />
+                </span>
+                Đăng Nhập
+              </a>
+            </div>
           </div>
 
           <div className="mt-10 md:mt-14">
@@ -88,7 +89,7 @@ export default function Hero() {
             </div>
             <div>
               <p className="text-[9.5px] tracking-[0.14em] text-[#75838f] uppercase">IP hiện tại</p>
-              <p className="mt-1 text-[12.5px] md:text-[13px] font-semibold text-[#f6d36b] whitespace-nowrap">
+              <p className="mt-1 text-[12.5px] md:text-[13px] font-semibold text-[#e8f52a] whitespace-nowrap">
                 {gatewayRuntime.ip}
               </p>
             </div>

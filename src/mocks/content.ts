@@ -1,17 +1,5 @@
 export const countries = [
   {
-    code: 'sg',
-    flag: 'SG',
-    flagUrl: 'https://flagcdn.com/w160/sg.png',
-    name: 'Singapore',
-    region: 'Châu Á',
-    hours: '09:00 – 23:00 (SGT)',
-    languages: 'Tiếng Anh, Tiếng Trung, Tiếng Việt',
-    desc: 'Đội ngũ phụ trách khu vực Singapore hỗ trợ trực tiếp 24/7, xử lý nhanh và bảo mật.',
-    ping: '24ms',
-    load: '14.2%',
-  },
-  {
     code: 'vn',
     flag: '🇻🇳',
     flagUrl: 'https://flagcdn.com/w160/vn.png',
@@ -22,6 +10,18 @@ export const countries = [
     desc: 'Kênh hỗ trợ chính, đội ngũ trực liên tục trong ngày và phản hồi nhanh nhất.',
     ping: '12ms',
     load: '11.4%',
+  },
+  {
+    code: 'sg',
+    flag: '🇸🇬',
+    flagUrl: 'https://flagcdn.com/w160/sg.png',
+    name: 'Singapore',
+    region: 'Đông Nam Á',
+    hours: '09:00 – 22:00 (SGT)',
+    languages: 'Tiếng Anh, Tiếng Việt',
+    desc: 'Cổng trung tâm khu vực Đông Nam Á, kết nối trực tiếp và xử lý yêu cầu nhanh nhất.',
+    ping: '18ms',
+    load: '13.9%',
   },
   {
     code: 'de',
@@ -140,7 +140,7 @@ export const gatewayRuntime = {
 };
 
 export const heroStats = [
-  { value: '10', label: 'Cổng quốc gia' },
+  { value: '11', label: 'Cổng quốc gia' },
   { value: '24/7', label: 'Kênh hỗ trợ' },
   { value: '5 phút', label: 'Phản hồi trung bình' },
   { value: '12.400+', label: 'Yêu cầu đã xử lý' },
@@ -149,7 +149,7 @@ export const heroStats = [
 export const highlights = [
   {
     icon: 'ri-global-line',
-    title: 'Mười cổng quốc gia',
+    title: 'Mười một cổng quốc gia',
     desc: 'Mỗi quốc gia có một cổng tiếp nhận riêng, đúng ngôn ngữ và đúng khung giờ địa phương.',
   },
   {
@@ -208,51 +208,51 @@ export const processSteps = [
 
 export const testimonials = [
   {
-    name: 'Nguyentai23',
+    name: 'Nguyễn Minh Quân',
     place: 'Hà Nội, Việt Nam',
     flag: '🇻🇳',
     quote:
-      'Con này nhả vãi lồn ae ơi. code với khuyến mãi rất nhiều nhé.',
+      'Mình để lại số điện thoại lúc 9 giờ tối, chưa được 3 phút đã có người nhắn Telegram. Hướng dẫn rất gọn, không lan man.',
     rating: 5,
   },
   {
-    name: 'Thantai662',
+    name: 'Trần Thu Hà',
     place: 'Berlin, Đức',
     flag: '🇩🇪',
     quote:
-      'Chọn cổng đức cũng nhả nhé anh em, chơi cũng mượt.',
+      'Điểm mình thích là được trả lời bằng tiếng Việt dù đang ở Đức. Múi giờ lệch mà vẫn có người phản hồi đúng hẹn.',
     rating: 5,
   },
   {
-    name: 'Daniel',
+    name: 'Daniel Weber',
     place: 'Zürich, Thụy Sĩ',
     flag: '🇨🇭',
     quote:
-      'Rõ ràng và kín đáo. Đặc biệt là rất nhả nhé anh em.',
+      'Rõ ràng và kín đáo. Họ chỉ hỏi đúng những gì cần thiết và không hỏi lại lần hai.',
     rating: 5,
   },
   {
-    name: 'Nam5533',
+    name: 'Lê Hoàng Nam',
     place: 'Tokyo, Nhật Bản',
     flag: '🇯🇵',
     quote:
-      'Ngày vào làm 1 mã 2 mã., xuất khẩu lao động làm mệt lắm a e ơi cứ mèo neko mà giã nhé bao nhả.',
+      'Mình thử ba nơi trước khi tới đây. Chỗ này là nơi duy nhất trả lời trong cùng một buổi tối.',
     rating: 5,
   },
   {
-    name: 'anh8201',
+    name: 'Phạm Ngọc Anh',
     place: 'Toronto, Canada',
     flag: '🇨🇦',
     quote:
-      'Cổng canada này cũng rất ok nhé mọi người.',
+      'Có người phụ trách riêng nên hỏi lại lần hai vẫn đúng người đó, không phải kể lại từ đầu.',
     rating: 5,
   },
   {
-    name: 'buonviai20',
+    name: 'Kim Ji-hoon',
     place: 'Seoul, Hàn Quốc',
     flag: '🇰🇷',
     quote:
-      'sever hàn quốc cũng nhả rất cao nhé anh em.chúc anh mãi thắng ở con này .',
+      'Quy trình bốn bước rõ ràng, mình nắm được đang ở bước nào. Cảm giác chuyên nghiệp.',
     rating: 5,
   },
 ];

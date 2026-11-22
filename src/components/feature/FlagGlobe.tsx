@@ -3,11 +3,12 @@ interface FlagGlobeProps {
   name: string;
   /** Seconds for one full rotation */
   duration?: number;
-  size?: 'md' | 'lg';
+  size?: 'sm' | 'md' | 'lg';
 }
 
 export default function FlagGlobe({ flagUrl, name, duration = 9, size = 'md' }: FlagGlobeProps) {
-  const boxSize = size === 'lg' ? 'w-[96px] h-[96px]' : 'w-[78px] h-[78px]';
+  const boxSize =
+    size === 'lg' ? 'w-[96px] h-[96px]' : size === 'sm' ? 'w-[46px] h-[46px]' : 'w-[78px] h-[78px]';
 
   return (
     <div className={`relative ${boxSize} flex items-center justify-center`}>

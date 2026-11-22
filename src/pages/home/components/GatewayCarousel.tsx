@@ -4,15 +4,22 @@ import QuickSignupModal from '@/components/feature/QuickSignupModal';
 import { countries } from '@/mocks/content';
 
 const AUTOPLAY_MS = 4600;
+const CENTER_COUNTRY = 'sg';
 
 function usePerView() {
-  const [perView, setPerView] = useState(3);
+  const [perView, setPerView] = useState(() => {
+    if (typeof window === 'undefined') return 1.3;
+    const width = window.innerWidth;
+    if (width < 640) return 1.3;
+    if (width < 1024) return 2;
+    return 3;
+  });
 
   useEffect(() => {
     const calc = () => {
       const width = window.innerWidth;
-      if (width < 768) setPerView(1);
-      else if (width < 1180) setPerView(2);
+      if (width < 640) setPerView(1.3);
+      else if (width < 1024) setPerView(2);
       else setPerView(3);
     };
     calc();
@@ -34,8 +41,8 @@ function InfoRow({
 }) {
   return (
     <div className="flex items-center justify-between gap-2">
-      <dt className="text-[10.5px] font-bold tracking-[0.05em] text-[#c6d4d0] uppercase whitespace-nowrap">{label}</dt>
-      <dd className={`text-[11.5px] font-bold whitespace-nowrap ${valueClass}`}>{value}</dd>
+      <dt className="text-[9px] font-bold tracking-[0.04em] text-[#c6d4d0] uppercase whitespace-nowrap">{label}</dt>
+      <dd className={`text-[10px] font-bold whitespace-nowrap ${valueClass}`}>{value}</dd>
     </div>
   );
 }
@@ -48,16 +55,16 @@ interface GatewayCardProps {
 
 function GatewayCard({ country, index, onEnter }: GatewayCardProps) {
   return (
-    <article className="group relative h-full overflow-hidden rounded-xl border border-[#35e0c0]/25 bg-[linear-gradient(180deg,#08161d_0%,#05101a_55%,#040b13_100%)] p-4 md:p-5 transition-all duration-500 hover:-translate-y-1 hover:border-[#35e0c0]/55">
+    <article className="group relative h-full overflow-hidden rounded-xl border border-[#35e0c0]/25 bg-[linear-gradient(180deg,#08161d_0%,#05101a_55%,#040b13_100%)] p-3 md:p-4 transition-all duration-500 hover:-translate-y-1 hover:border-[#35e0c0]/55">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#35e0c0]/70 to-transparent" />
       <div className="pointer-events-none absolute -top-16 left-1/2 h-32 w-32 -translate-x-1/2 rounded-full bg-[#35e0c0]/10 blur-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
-      <span className="pointer-events-none absolute right-3 top-2 font-tech text-[34px] leading-none font-extrabold text-white/5 select-none">
+      <span className="pointer-events-none absolute right-3 top-2 font-tech text-[30px] leading-none font-extrabold text-white/5 select-none">
         {String(index + 1).padStart(2, '0')}
       </span>
 
       <div className="relative flex items-center justify-between">
-        <span className="inline-flex items-center gap-1.5 text-[9.5px] font-bold tracking-[0.16em] text-[#4ade80] uppercase">
+        <span className="inline-flex items-center gap-1.5 text-[9px] font-bold tracking-[0.16em] text-[#4ade80] uppercase">
           <span className="w-1.5 h-1.5 rounded-full bg-[#4ade80] block pulse-dot" />
           Online
         </span>
@@ -68,18 +75,27 @@ function GatewayCard({ country, index, onEnter }: GatewayCardProps) {
         </span>
       </div>
 
-      <div className="relative mt-5 flex justify-center">
-        <FlagGlobe flagUrl={country.flagUrl} name={country.name} duration={8 + (index % 4) * 1.6} />
+      <div className="relative mt-2 flex justify-center">
+        <FlagGlobe flagUrl={country.flagUrl} name={country.name} size="sm" duration={8 + (index % 4) * 1.6} />
       </div>
 
-      <h3 className="relative mt-4 text-center text-[15px] font-extrabold tracking-[0.08em] text-white uppercase">
+      <h3 className="relative mt-1.5 text-center text-[12.5px] font-extrabold tracking-[0.07em] text-white uppercase">
         {country.name}
       </h3>
-      <p className="relative mt-1 text-center text-[10px] tracking-[0.14em] text-[#35e0c0]/80 uppercase">
+      <p className="relative mt-0.5 text-center text-[8.5px] tracking-[0.12em] text-[#35e0c0]/80 uppercase">
         {country.region}
       </p>
 
-      <dl className="relative mt-4 space-y-2.5 rounded-lg border border-white/10 bg-[#020712]/85 p-3">
+      {country.code === CENTER_COUNTRY && (
+        <span className="relative mx-auto mt-1.5 inline-flex items-center gap-1 rounded-full border border-[#e8f52a]/45 bg-[#e8f52a]/12 px-2 py-0.5 text-[7.5px] font-bold tracking-[0.14em] text-[#e8f52a] uppercase">
+          <span className="w-1.5 h-1.5 flex items-center justify-center">
+            <i className="ri-focus-3-line text-[9px]" />
+          </span>
+          Cổng trung tâm
+        </span>
+      )}
+
+      <dl className="relative mt-2 space-y-1.5 rounded-lg border border-white/10 bg-[#020712]/85 p-2">
         <InfoRow label="Độ trễ (ping)" value={country.ping} valueClass="text-[#35e0c0]" />
         <InfoRow label="Mã hóa" value="AES-256" valueClass="text-[#a8e6dd]" />
         <InfoRow label="Tải máy chủ" value={country.load} valueClass="text-[#f27ac8]" />
@@ -89,7 +105,7 @@ function GatewayCard({ country, index, onEnter }: GatewayCardProps) {
       <button
         type="button"
         onClick={onEnter}
-        className="relative mt-4 w-full inline-flex items-center justify-center gap-1.5 px-4 py-3 rounded-lg border border-[#35e0c0]/60 bg-[#04121a] text-[#d9fff7] text-[12.5px] font-bold tracking-[0.1em] transition-colors duration-300 hover:bg-[#35e0c0] hover:text-[#04120f] cursor-pointer whitespace-nowrap"
+        className="relative mt-2.5 w-full inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg border border-[#35e0c0]/60 bg-[#04121a] text-[#d9fff7] text-[11.5px] font-bold tracking-[0.1em] transition-colors duration-300 hover:bg-[#35e0c0] hover:text-[#04120f] cursor-pointer whitespace-nowrap"
       >
         VÀO CỔNG
         <span className="w-3.5 h-3.5 flex items-center justify-center">
@@ -102,11 +118,20 @@ function GatewayCard({ country, index, onEnter }: GatewayCardProps) {
 
 export default function GatewayCarousel() {
   const perView = usePerView();
-  const [active, setActive] = useState(0);
+  const centered = perView < 2;
+  const cardWidth = 100 / perView;
+  const sidePad = centered ? (100 - cardWidth) / 2 : 0;
+
+  const [active, setActive] = useState(() => {
+    const centerIndex = countries.findIndex((country) => country.code === CENTER_COUNTRY);
+    if (centerIndex < 0) return 0;
+    const max = Math.max(0, Math.ceil(countries.length - perView));
+    return Math.min(Math.max(centerIndex - Math.floor((perView - 1) / 2), 0), max);
+  });
   const [paused, setPaused] = useState(false);
   const [selected, setSelected] = useState<string | null>(null);
 
-  const maxIndex = Math.max(0, countries.length - perView);
+  const maxIndex = Math.max(0, Math.ceil(countries.length - (centered ? 1 : perView)));
 
   useEffect(() => {
     setActive((prev) => Math.min(prev, maxIndex));
@@ -143,21 +168,22 @@ export default function GatewayCarousel() {
           type="button"
           onClick={goPrev}
           aria-label="Cổng trước"
-          className="shrink-0 w-9 h-9 md:w-10 md:h-10 flex items-center justify-center rounded-full border border-white/15 text-[#9aa8b3] transition-colors duration-300 hover:text-[#35e0c0] hover:border-[#35e0c0]/60 cursor-pointer"
+          className="shrink-0 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full border border-white/15 text-[#9aa8b3] transition-colors duration-300 hover:text-[#35e0c0] hover:border-[#35e0c0]/60 cursor-pointer"
         >
-          <i className="ri-arrow-left-s-line text-lg" />
+          <i className="ri-arrow-left-s-line text-base md:text-lg" />
         </button>
 
         <div className="min-w-0 flex-1 overflow-hidden">
           <div
             className="flex items-stretch transition-transform duration-[700ms] ease-[cubic-bezier(0.22,0.68,0.32,1)]"
-            style={{ transform: `translateX(-${(active * 100) / perView}%)` }}
+            style={{ transform: `translateX(-${(active * cardWidth).toFixed(4)}%)` }}
           >
+            {centered && <div className="shrink-0" style={{ width: `${sidePad}%` }} aria-hidden="true" />}
             {countries.map((country, index) => (
               <div
                 key={country.code}
                 className="shrink-0 px-1.5 md:px-2"
-                style={{ width: `${100 / perView}%` }}
+                style={{ width: `${cardWidth}%` }}
               >
                 <GatewayCard
                   country={country}
@@ -166,6 +192,7 @@ export default function GatewayCarousel() {
                 />
               </div>
             ))}
+            {centered && <div className="shrink-0" style={{ width: `${sidePad}%` }} aria-hidden="true" />}
           </div>
         </div>
 
@@ -173,9 +200,9 @@ export default function GatewayCarousel() {
           type="button"
           onClick={goNext}
           aria-label="Cổng tiếp theo"
-          className="shrink-0 w-9 h-9 md:w-10 md:h-10 flex items-center justify-center rounded-full border border-white/15 text-[#9aa8b3] transition-colors duration-300 hover:text-[#35e0c0] hover:border-[#35e0c0]/60 cursor-pointer"
+          className="shrink-0 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full border border-white/15 text-[#9aa8b3] transition-colors duration-300 hover:text-[#35e0c0] hover:border-[#35e0c0]/60 cursor-pointer"
         >
-          <i className="ri-arrow-right-s-line text-lg" />
+          <i className="ri-arrow-right-s-line text-base md:text-lg" />
         </button>
       </div>
 

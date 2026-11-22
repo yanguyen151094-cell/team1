@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
 import type { MouseEvent } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { GATE_REDIRECT_URL } from '@/components/feature/QuickSignupForm';
 
 const navItems = [
   { label: 'Trang Chủ', hash: '#home' },
-  { label: 'Cổng Quốc Gia', hash: '#countries' },
+  { label: 'Cổng Quốc Tế', hash: '#countries' },
   { label: 'Quy Trình', hash: '#process' },
-  { label: 'Đánh Giá', hash: '#reviews' },
-  { label: 'Hỏi Đáp', hash: '#faq' },
 ];
 
 export default function SiteHeader() {
@@ -55,7 +54,7 @@ export default function SiteHeader() {
       <div className="w-full px-4 md:px-8 flex items-center justify-between h-16 md:h-[72px]">
         <Link to="/" aria-label="YG88 - Hỗ trợ đa quốc gia" className="flex items-center gap-2.5 cursor-pointer group">
           <span className="flex flex-col leading-none">
-            <span className="font-brand brand-mint block pl-1 text-[24px] leading-none tracking-[0.03em] md:text-[28px]">
+            <span className="font-brand brand-logo block pl-1 text-[24px] leading-none tracking-[0.02em] md:text-[28px]">
               YG88
             </span>
             <span className="mt-1 pl-1 text-[8.5px] tracking-[0.2em] text-[#8d8a83] uppercase md:text-[9.5px] md:tracking-[0.24em]">
@@ -64,7 +63,7 @@ export default function SiteHeader() {
           </span>
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-1">
+        <nav className="hidden lg:flex items-center gap-1" aria-label="Điều hướng chính">
           {navItems.map((item) => (
             <button
               key={item.hash}
@@ -77,20 +76,33 @@ export default function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <Link
-            to="/dang-ky"
+          <a
+            href={GATE_REDIRECT_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden sm:inline-flex items-center gap-2 px-4 py-2.5 rounded-md border border-[#e8f52a]/45 text-[#e8f52a] hover:bg-[#e8f52a]/12 text-[13px] font-bold transition-colors duration-200 cursor-pointer whitespace-nowrap"
+          >
+            <span className="w-4 h-4 flex items-center justify-center">
+              <i className="ri-login-box-line text-base" />
+            </span>
+            Đăng Nhập
+          </a>
+
+          <a
+            href="/dang-ky"
             onClick={goToRegister}
-            className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-[#e0b36a] hover:bg-[#eec27f] text-[#0a0a0b] text-[13px] font-bold transition-colors duration-200 cursor-pointer whitespace-nowrap"
+            className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-[#e8f52a] hover:bg-[#f2ff5c] text-[#0a0a0b] text-[13px] font-bold transition-colors duration-200 cursor-pointer whitespace-nowrap"
           >
             <span className="w-4 h-4 flex items-center justify-center">
               <i className="ri-user-add-line text-base" />
             </span>
             Đăng Ký
-          </Link>
+          </a>
 
           <button
             onClick={() => setMenuOpen((prev) => !prev)}
             aria-label="Mở menu"
+            aria-expanded={menuOpen}
             className="lg:hidden w-10 h-10 flex items-center justify-center rounded-md border border-white/12 text-white cursor-pointer"
           >
             <i className={`text-lg ${menuOpen ? 'ri-close-line' : 'ri-menu-line'}`} />
@@ -109,13 +121,30 @@ export default function SiteHeader() {
               {item.label}
             </button>
           ))}
-          <Link
-            to="/dang-ky"
-            onClick={goToRegister}
-            className="relative z-10 mt-2 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-md bg-[#e0b36a] text-[#0a0a0b] text-sm font-bold cursor-pointer whitespace-nowrap"
+
+          <a
+            href={GATE_REDIRECT_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setMenuOpen(false)}
+            className="relative z-10 mt-2 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-md border border-[#e8f52a]/45 text-[#e8f52a] text-sm font-bold cursor-pointer whitespace-nowrap"
           >
+            <span className="w-4 h-4 flex items-center justify-center">
+              <i className="ri-login-box-line text-base" />
+            </span>
+            Đăng Nhập
+          </a>
+
+          <a
+            href="/dang-ky"
+            onClick={goToRegister}
+            className="relative z-10 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-md bg-[#e8f52a] text-[#0a0a0b] text-sm font-bold cursor-pointer whitespace-nowrap"
+          >
+            <span className="w-4 h-4 flex items-center justify-center">
+              <i className="ri-user-add-line text-base" />
+            </span>
             Đăng Ký Ngay
-          </Link>
+          </a>
         </div>
       )}
     </header>

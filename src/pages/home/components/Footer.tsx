@@ -23,7 +23,7 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <div className="flex items-center gap-2.5">
               <span className="flex flex-col leading-none">
-                <span className="font-brand brand-mint block pl-1 text-[26px] leading-none tracking-[0.03em]">
+                <span className="font-brand brand-logo block pl-1 text-[26px] leading-none tracking-[0.02em]">
                   YG88
                 </span>
                 <span className="mt-1 pl-1 text-[9px] tracking-[0.22em] text-[#8d8a83] uppercase">
@@ -32,7 +32,7 @@ export default function Footer() {
               </span>
             </div>
             <p className="mt-5 text-[13px] leading-relaxed text-[#7d7871] max-w-xs">
-              Cổng tiếp nhận yêu cầu và hỗ trợ khách hàng tại 10 quốc gia. Rõ ràng, kín đáo, có người phụ trách
+              Cổng tiếp nhận yêu cầu và hỗ trợ khách hàng tại 11 quốc gia. Rõ ràng, kín đáo, có người phụ trách
               theo từng khu vực.
             </p>
             <div className="mt-5 flex gap-2">

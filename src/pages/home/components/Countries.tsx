@@ -20,13 +20,13 @@ export default function Countries() {
               Chọn cổng của bạn
             </h2>
             <p className="mt-4 text-[14px] leading-relaxed text-[#98a5b0]">
-              Mười cổng, mười đội ngũ phụ trách riêng. Bấm <strong className="font-semibold text-[#dbe6ec]">VÀO CỔNG</strong> ở
+              Mười một cổng, mười một đội ngũ phụ trách riêng. Bấm <strong className="font-semibold text-[#dbe6ec]">VÀO CỔNG</strong> ở
               quốc gia bạn đang ở, để lại số điện thoại và Telegram — người phụ trách sẽ chủ động liên hệ lại.
             </p>
             <div className="mt-5 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#35e0c0]/25 bg-[#35e0c0]/8">
               <span className="w-1.5 h-1.5 rounded-full bg-[#4ade80] block pulse-dot" />
               <span className="text-[11px] text-[#9fc9c3] whitespace-nowrap">
-                10/10 cổng đang hoạt động · bảo mật AES-256
+                11/11 cổng đang hoạt động · bảo mật AES-256
               </span>
             </div>
           </div>

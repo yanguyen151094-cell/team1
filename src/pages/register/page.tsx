@@ -7,7 +7,7 @@ const benefits = [
   {
     icon: 'ri-user-follow-line',
     title: 'Đúng người phụ trách',
-    desc: 'Dựa vào quốc gia và nội dung bạn chọn, yêu cầu được chuyển thẳng tới người phụ trách khu vực.',
+    desc: 'Yêu cầu được chuyển thẳng tới người phụ trách khu vực và liên hệ lại đúng đầu mối.',
   },
   {
     icon: 'ri-time-line',
@@ -47,11 +47,11 @@ export default function RegisterPage() {
               </nav>
 
               <h1 className="font-display text-3xl md:text-[44px] leading-tight font-bold text-white max-w-2xl">
-                Đăng ký để được <span className="text-[#e0b36a]">hỗ trợ đúng người</span>
+                Đăng ký để nhận <span className="text-[#e8f52a]">link cổng đích</span>
               </h1>
               <p className="mt-4 max-w-xl text-[14px] md:text-[15px] leading-relaxed text-[#a29d95]">
-                Điền thông tin bên dưới, mất khoảng một phút. Đội ngũ phụ trách sẽ liên hệ lại qua Telegram hoặc
-                số điện thoại bạn để lại.
+                Chỉ cần số điện thoại hoặc tên Telegram. Gửi xong, hệ thống mở ngay link cổng đích và đội ngũ phụ
+                trách sẽ liên hệ lại với bạn.
               </p>
             </div>
           </div>
@@ -87,7 +87,7 @@ export default function RegisterPage() {
                   với người phụ trách.
                 </p>
                 <a
-                  href="https://t.me/"
+                  href="https://www.noibo1d.online/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-3.5 inline-flex items-center gap-2 px-4 py-2.5 rounded-md border border-white/15 hover:border-[#e0b36a]/60 text-[12.5px] font-semibold text-[#e6e1d9] hover:text-white transition-colors cursor-pointer whitespace-nowrap"
