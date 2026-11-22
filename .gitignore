@@ -1,0 +1,41 @@
+# Thư mục phụ thuộc — KHÔNG đưa lên Git (Vercel sẽ tự cài lại)
+node_modules
+.pnp
+.pnp.js
+
+# Kết quả build
+out
+dist
+build
+
+# Vercel / Netlify
+.vercel
+.netlify
+
+# Biến môi trường (chứa khoá bí mật)
+.env
+.env.local
+.env.*.local
+
+# File hệ thống & log
+.DS_Store
+Thumbs.db
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Trình soạn thảo
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Cache
+.cache
+.temp
+*.tsbuildinfo
