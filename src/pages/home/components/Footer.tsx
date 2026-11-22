@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
 import { countries } from '@/mocks/content';
+import RegisterLink from '@/components/base/RegisterLink';
 
 const supportLinks = [
   { label: 'Trung tâm hỗ trợ', href: '#faq' },
@@ -94,18 +94,17 @@ export default function Footer() {
 
           <div>
             <h4 className="text-[13px] font-bold text-white mb-4">
-              <Link to="/dang-ky" className="hover:text-[#e0b36a] transition-colors cursor-pointer">
+              <RegisterLink className="hover:text-[#e0b36a] transition-colors cursor-pointer">
                 Bắt đầu
-              </Link>
+              </RegisterLink>
             </h4>
             <ul className="flex flex-col gap-2.5">
               <li>
-                <Link
-                  to="/dang-ky"
+                <RegisterLink
                   className="text-[13px] text-[#7d7871] hover:text-[#cfcac2] transition-colors cursor-pointer"
                 >
                   Đăng ký nhận hỗ trợ
-                </Link>
+                </RegisterLink>
               </li>
               <li>
                 <a

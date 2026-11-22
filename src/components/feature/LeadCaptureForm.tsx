@@ -3,8 +3,9 @@ import type { FormEvent } from 'react';
 import useFormSubmit from '@/hooks/useFormSubmit';
 import { sendLeadToSheet } from '@/lib/sheetSink';
 import { countries } from '@/mocks/content';
+import { FORM_SUBMIT_ADDR } from '@/lib/siteConfig';
 
-const SUBMIT_ADDR = 'https://readdy.ai/api/form/dbvetsddijqr49061nbg';
+const SUBMIT_ADDR = FORM_SUBMIT_ADDR;
 
 const fieldClass =
   'w-full box-border min-w-0 rounded-md bg-[#101013] border border-white/10 px-4 py-3 text-sm text-white placeholder:text-[#6f6b65] focus:outline-none focus:border-[#e0b36a]/70 focus:ring-2 focus:ring-[#e0b36a]/20 transition-colors';

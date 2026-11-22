@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import GatewayCarousel from '@/pages/home/components/GatewayCarousel';
 import HeroBackground from '@/pages/home/components/HeroBackground';
 import QuickSignupModal from '@/components/feature/QuickSignupModal';
-import { GATE_REDIRECT_URL } from '@/components/feature/QuickSignupForm';
+import { GATE_REDIRECT_URL } from '@/lib/siteConfig';
 import { gatewayRuntime } from '@/mocks/content';
 
 export default function Hero() {

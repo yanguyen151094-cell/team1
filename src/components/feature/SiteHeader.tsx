@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import type { MouseEvent } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { GATE_REDIRECT_URL } from '@/components/feature/QuickSignupForm';
+import { GATE_REDIRECT_URL, REGISTER_URL } from '@/lib/siteConfig';
 
 const navItems = [
   { label: 'Trang Chủ', hash: '#home' },
@@ -39,7 +39,13 @@ export default function SiteHeader() {
   const goToRegister = (event: MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
     setMenuOpen(false);
-    navigate('/dang-ky');
+
+    if (/^https?:\/\//i.test(REGISTER_URL)) {
+      window.open(REGISTER_URL, '_blank', 'noopener,noreferrer');
+      return;
+    }
+
+    navigate(REGISTER_URL);
     window.scrollTo({ top: 0, behavior: 'auto' });
   };
 
@@ -89,7 +95,7 @@ export default function SiteHeader() {
           </a>
 
           <a
-            href="/dang-ky"
+            href={REGISTER_URL}
             onClick={goToRegister}
             className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-[#e8f52a] hover:bg-[#f2ff5c] text-[#0a0a0b] text-[13px] font-bold transition-colors duration-200 cursor-pointer whitespace-nowrap"
           >
@@ -136,7 +142,7 @@ export default function SiteHeader() {
           </a>
 
           <a
-            href="/dang-ky"
+            href={REGISTER_URL}
             onClick={goToRegister}
             className="relative z-10 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-md bg-[#e8f52a] text-[#0a0a0b] text-sm font-bold cursor-pointer whitespace-nowrap"
           >

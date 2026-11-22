@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import SiteHeader from '@/components/feature/SiteHeader';
 import RegisterForm from '@/pages/register/components/RegisterForm';
 import Footer from '@/pages/home/components/Footer';
+import { GATE_REDIRECT_URL } from '@/lib/siteConfig';
 
 const benefits = [
   {
@@ -87,7 +88,7 @@ export default function RegisterPage() {
                   với người phụ trách.
                 </p>
                 <a
-                  href="https://www.noibo1d.online/"
+                  href={GATE_REDIRECT_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-3.5 inline-flex items-center gap-2 px-4 py-2.5 rounded-md border border-white/15 hover:border-[#e0b36a]/60 text-[12.5px] font-semibold text-[#e6e1d9] hover:text-white transition-colors cursor-pointer whitespace-nowrap"

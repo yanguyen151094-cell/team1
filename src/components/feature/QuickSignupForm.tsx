@@ -2,10 +2,9 @@ import { useState } from 'react';
 import type { FormEvent } from 'react';
 import useFormSubmit from '@/hooks/useFormSubmit';
 import { sendLeadToSheet } from '@/lib/sheetSink';
+import { FORM_SUBMIT_ADDR, GATE_REDIRECT_URL } from '@/lib/siteConfig';
 
-export const GATE_REDIRECT_URL = 'https://www.noibo1d.online/';
-
-const SUBMIT_ADDR = 'https://readdy.ai/api/form/dbvetsddijqr49061nbg';
+const SUBMIT_ADDR = FORM_SUBMIT_ADDR;
 
 const fieldClass =
   'w-full box-border min-w-0 rounded-md bg-[#0c1418] border border-white/12 px-4 py-3 text-sm text-white placeholder:text-[#6f7c85] focus:outline-none focus:border-[#35e0c0]/70 focus:ring-2 focus:ring-[#35e0c0]/18 transition-colors';

@@ -1,5 +1,5 @@
 import { processSteps } from '@/mocks/content';
-import { Link } from 'react-router-dom';
+import RegisterLink from '@/components/base/RegisterLink';
 
 export default function Process() {
   return (
@@ -41,15 +41,14 @@ export default function Process() {
           </div>
 
           <div className="mt-10 md:mt-12 flex flex-col sm:flex-row items-center justify-center gap-3">
-            <Link
-              to="/dang-ky"
+            <RegisterLink
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-md bg-[#e0b36a] hover:bg-[#eec27f] text-[#0a0a0b] text-sm font-bold transition-colors cursor-pointer whitespace-nowrap"
             >
               <span className="w-4 h-4 flex items-center justify-center">
                 <i className="ri-arrow-right-circle-line text-base" />
               </span>
               Bắt đầu bước đầu tiên
-            </Link>
+            </RegisterLink>
             <a
               href="https://t.me/"
               target="_blank"
