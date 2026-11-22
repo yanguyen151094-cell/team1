@@ -68,7 +68,7 @@ export const chatConversation: string[] = [
   'Anh em nào mới vào chưa rõ cách nhận KM nạp đầu thì cứ hỏi nhé.',
   'Nãy giờ mình bú cũng kha khá rồi, nhường lộc lại cho anh em vào sau đấy.',
   'Có ai từ live sang đây mà chưa nhận được quà không?',
-  'Chúc anh em trong phòng hôm nay tay thơm, bú ngập mồm nhé.'
+  'Chúc anh em trong phòng hôm nay tay thơm, bú ngập mồm nhé.',
   'Cổng này dạo này chạy mượt k ae',
   'Có bị giật lag hay văng giữa chừng k',
   'Mình mới vô test thử',
@@ -167,4 +167,4 @@ export const chatConversation: string[] = [
   'Khao ae ly cà phê lấy hên đi nào',
   'Tối nay thấy cầu đẹp lắm',
   'Ae chuẩn bị tinh thần chiến tiếp nhé',
-  ];
+];
